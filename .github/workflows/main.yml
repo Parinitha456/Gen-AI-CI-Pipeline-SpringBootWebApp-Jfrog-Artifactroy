@@ -32,7 +32,7 @@ jobs:
       - name: Publish Artifact to JFrog Artifactory
         run: |
           # Configure JFrog Artifactory details
-          export ARTIFACTORY_URL='https://vishwanath07.jfrog.io/artifactory/api/maven/demo'
+          export ARTIFACTORY_URL='https://vishwanath07.jfrog.io/artifactory/demo/'
           export ARTIFACTORY_REPO='demo'
           export ARTIFACTORY_USERNAME='demo'
           export ARTIFACTORY_PASSWORD='Demo@1234'
