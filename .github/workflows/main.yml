@@ -39,7 +39,9 @@ jobs:
           
           # Install JFrog CLI
           curl -fL https://getcli.jfrog.io | sh
-    
+          
+          sleep 1
+          
           # Upload JAR artifact to Artifactory
           ./jfrog rt u ./target/*.jar $ARTIFACTORY_REPO/ --url=$ARTIFACTORY_URL --user=$ARTIFACTORY_USERNAME --password=$ARTIFACTORY_PASSWORD
 
