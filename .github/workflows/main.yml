@@ -32,10 +32,10 @@ jobs:
       - name: Publish Artifact to JFrog Artifactory
         run: |
           # Configure JFrog Artifactory details
-          export ARTIFACTORY_URL='https://vishwanath07.jfrog.io/artifactory/api/maven/demo1-genai'
+          export ARTIFACTORY_URL='https://jcenter.bintray.com'
           export ARTIFACTORY_REPO='demo1-genai'
           export ARTIFACTORY_USERNAME='Vishwa'
-          export ARTIFACTORY_PASSWORD='Vishwa@1234'
+          export ARTIFACTORY_PASSWORD='JE2cwqvRNdJRPWKg1gF1iPhepdJx9FEqU8oz4coS9pYAFo7HYm'
           
           # Install JFrog CLI
           curl -fL https://getcli.jfrog.io | sh
