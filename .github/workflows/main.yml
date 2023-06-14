@@ -34,7 +34,7 @@ jobs:
           # Configure JFrog Artifactory details
           export ARTIFACTORY_URL='https://jcenter.bintray.com'
           export ARTIFACTORY_REPO='demo1-genai'
-          export ARTIFACTORY_USERNAME='Demo'
+          export ARTIFACTORY_USERNAME='demo'
           export ARTIFACTORY_PASSWORD='Demo@1234'
           
           # Install JFrog CLI
