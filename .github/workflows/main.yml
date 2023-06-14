@@ -36,9 +36,12 @@ jobs:
           export ARTIFACTORY_REPO='demo1-genai'
           export ARTIFACTORY_USERNAME='Vishwa'
           export ARTIFACTORY_PASSWORD='Vishwa@1234'
-
-          # Publish JAR artifact
-          mv ./target/*.jar $ARTIFACTORY_REPO/
+          
+          # Install JFrog CLI
+          curl -fL https://getcli.jfrog.io | sh
+    
+          # Upload JAR artifact to Artifactory
+          ./jfrog rt u ./target/*.jar $ARTIFACTORY_REPO/ --url=$ARTIFACTORY_URL --user=$ARTIFACTORY_USERNAME --password=$ARTIFACTORY_PASSWORD
 
   sonarqube:
     name: SonarQube Analysis
