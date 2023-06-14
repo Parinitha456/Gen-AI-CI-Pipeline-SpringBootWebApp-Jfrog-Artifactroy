@@ -1,41 +1,40 @@
 name: CI Pipeline
-
 on:
   workflow_dispatch:
   push:
     branches:
-      - master
+      - Manual
 env:
   SONAR_TOKEN: '75621cba6337eff300a0b42e8d68eb9d4cdbe709'
   SONAR_HOST_URL: 'http://brillioonesonar.eastus.cloudapp.azure.com:9000'
   
-
 jobs:
   build:
-    name: Build and Test
+    name: Build and Package
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up JDK
+      - name: Set up Java
         uses: actions/setup-java@v2
         with:
-          java-version: 11
-          distribution: 'temurin'
+          java-version: '11'
 
       - name: Build with Maven
         run: mvn clean package
-        
-      - name: Run Tests
-        run: mvn test
-        
-      - name: Publish Build Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: build-artifacts
-          path: target/*.jar
+
+      - name: Publish Artifact to JFrog Artifactory
+        run: |
+          # Configure JFrog Artifactory details
+          export ARTIFACTORY_URL= "https://vishwanath07.jfrog.io/artifactory/api/maven/genai-libs-snapshot"
+          export ARTIFACTORY_REPO= "genai-libs-snapshot"
+          export ARTIFACTORY_USERNAME= "Vishwa"
+          export ARTIFACTORY_PASSWORD= "Vishwa@1234"
+
+          # Publish JAR artifact
+          mv ./target/*.jar $ARTIFACTORY_REPO/
 
   sonarqube:
     name: SonarQube Analysis
