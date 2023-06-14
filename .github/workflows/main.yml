@@ -33,9 +33,9 @@ jobs:
         run: |
           # Configure JFrog Artifactory details
           export ARTIFACTORY_URL='https://vishwanath07.jfrog.io/artifactory/api/maven/demo1-genai'
-          export ARTIFACTORY_REPO = 'demo1-genai'
-          export ARTIFACTORY_USERNAME = 'Vishwa'
-          export ARTIFACTORY_PASSWORD = 'Vishwa@1234'
+          export ARTIFACTORY_REPO='demo1-genai'
+          export ARTIFACTORY_USERNAME='Vishwa'
+          export ARTIFACTORY_PASSWORD='Vishwa@1234'
 
           # Publish JAR artifact
           mv ./target/*.jar $ARTIFACTORY_REPO/
