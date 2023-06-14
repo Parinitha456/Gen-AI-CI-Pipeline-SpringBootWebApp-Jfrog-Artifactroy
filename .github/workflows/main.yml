@@ -32,8 +32,8 @@ jobs:
       - name: Publish Artifact to JFrog Artifactory
         run: |
           # Configure JFrog Artifactory details
-          export ARTIFACTORY_URL= "https://vishwanath07.jfrog.io/artifactory/api/maven/genai-libs-snapshot"
-          export ARTIFACTORY_REPO= "genai-libs-snapshot"
+          export ARTIFACTORY_URL= "https://vishwanath07.jfrog.io/artifactory/genai-maven-remote/"
+          export ARTIFACTORY_REPO= "genai-maven-remote"
           export ARTIFACTORY_USERNAME= "Vishwa"
           export ARTIFACTORY_PASSWORD= "Vishwa@1234"
 
