@@ -29,6 +29,14 @@ jobs:
       - name: Run Tests
         run: mvn test
         
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v1.2.0
+        with:
+          SONAR_TOKEN: ${{env.SONAR_TOKEN }}
+          projectKey: ${{ env.sonar.projectKey }}
+          projectName: ${{ env.sonar.projectName }}
+          SONAR_HOST_URL: ${{ env.SONAR_HOST_URL }}
+        
       - name: Publish Artifact to JFrog Artifactory
         run: |
           # Configure JFrog Artifactory details
@@ -45,19 +53,4 @@ jobs:
           # Upload JAR artifact to Artifactory
           ./jfrog rt u ./target/*.jar $ARTIFACTORY_REPO/ --url=$ARTIFACTORY_URL --user=$ARTIFACTORY_USERNAME --password=$ARTIFACTORY_PASSWORD
 
-  sonarqube:
-    name: SonarQube Analysis
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v1.2.0
-        with:
-          SONAR_TOKEN: ${{env.SONAR_TOKEN }}
-          projectKey: ${{ env.sonar.projectKey }}
-          projectName: ${{ env.sonar.projectName }}
-          SONAR_HOST_URL: ${{ env.SONAR_HOST_URL }}
+    
